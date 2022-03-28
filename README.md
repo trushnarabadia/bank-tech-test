@@ -1,4 +1,4 @@
-# bank-tech-test
+# Bank tech test
 ## Specification 
 
 Building a basic bank app. 
