@@ -33,8 +33,20 @@ So that I can pay money into my account, <br>
 I'd like to make a deposit.
 
 As a customer of Bank, <br>
+When I make a deposit, <br>
+I'd like the balance of my account to increase.
+
+As a customer of Bank, <br>
 So that I can take some money out of my account, <br>
 I'd like to make a withdrawal.
+
+As a customer of Bank, <br>
+When I make a withdrawal, <br>
+I'd like the balande of my account to decrease.
+
+As the Bank and customers of the Bank, <br>
+So that we can tell when transactions are taking place, <br>
+We'd like to keep track of the dates the transactions are made.
 
 As the Bank, <br>
 So that we can tell customers about their account, <br>
