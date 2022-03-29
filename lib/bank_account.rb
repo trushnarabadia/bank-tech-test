@@ -14,4 +14,11 @@ class BankAccount
     @balance -= amount
   end
 
+  def deposit_info(amount)
+    info = {
+      date: Time.now.strftime('%d/%m/%Y'),
+      amount: amount, 
+      balance: @balance
+    }
+  end
 end
