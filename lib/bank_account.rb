@@ -1,3 +1,5 @@
+require_relative 'statement'
+
 class BankAccount
 
   attr_accessor :balance
@@ -17,8 +19,22 @@ class BankAccount
   def deposit_info(amount)
     info = {
       date: Time.now.strftime('%d/%m/%Y'),
+      type: :deposit,
       amount: amount, 
       balance: @balance
     }
+  end
+
+  def withdrawal_info(amount)
+    info = {
+      date: Time.now.strftime('%d/%m/%Y'),
+      type: :withdraw,
+      amount: amount, 
+      balance: @balance
+    }
+  end
+
+  def print_transactions
+    print "date || credit || debit || balance"
   end
 end

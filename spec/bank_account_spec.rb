@@ -19,7 +19,7 @@ describe BankAccount do
 
     it 'should record the details of the deposit transaction' do 
       @bank_account.deposit(15)
-      info = { date: @date, amount: 15, balance: 15 } 
+      info = { date: @date, type: :deposit, amount: 15, balance: 15 } 
       expect(@bank_account.deposit_info(15)).to include (info)
     end
 
@@ -36,16 +36,26 @@ describe BankAccount do
       @bank_account.withdraw(35)
       expect(@bank_account.balance).to eq (40)
     end
+
+    it 'should record the details of the withdrawal transaction' do 
+      @bank_account.deposit(90)
+      @bank_account.withdraw(20)
+      info = { date: @date, type: :withdraw, amount: 20, balance: 70 } 
+      expect(@bank_account.withdrawal_info(20)).to include (info)
+    end
+
   end
 
-  # describe '#print_transactions' do 
-  #   it 'should include the amount of transaction, type and balance after' do
-  #     bank_account = BankAccount.new 
-  #     bank_account.deposit(50)
-  #     bank_account.withdraw(20)
-  #     expect(bank_account.print_transactions).to include (50)
-  #     expect(bank_account.print_transactions).to include (20)
-  #     expect(bank_account.print_transactions).to include (30)
-  #   end
-  # end
+  describe '#print_transactions' do
+  
+    it 'should have a top line of info above transactions' do
+      expect{ @bank_account.print_transactions }.to output("date || credit || debit || balance").to_stdout
+    end
+
+    # it 'should include the amount of a transaction, type and balance after' do
+    #   @bank_account.deposit(50)
+    #   @bank_account.withdraw(20)
+    #   expect(@bank_account.listed_transactions)
+    # end
+  end
 end
