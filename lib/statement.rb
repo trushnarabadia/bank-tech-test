@@ -1,6 +1,7 @@
-class Statement
+module Statement
 
-#   def listed_transactions()
-#   end
+  def print_top_line()
+    print "date || credit || debit || balance"
+  end
 
 end

@@ -1,7 +1,7 @@
 require_relative 'statement'
 
 class BankAccount
-
+include Statement
   attr_accessor :balance
 
   def initialize(balance = 0)
@@ -34,7 +34,7 @@ class BankAccount
     }
   end
 
-  def print_transactions
-    print "date || credit || debit || balance"
+  def print_statement()
+    print_top_line
   end
 end
