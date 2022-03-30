@@ -49,14 +49,19 @@ describe BankAccount do
   describe '#print_transactions' do
   
     it 'should have a top line of info above transactions' do
-      expect{ @bank_account.print_statement }.to output("date || credit || debit || balance").to_stdout
+      expect{ @bank_account.statement }.to output("date || credit || debit || balance\n").to_stdout
     end
 
-    # it 'should include the amount of a deposit transaction, type and balance after' do
-    #   transactions = @bank_account.deposit(50)
-    #   expect{ @bank_account.print_statement(transactions) }.to output(
-    #     "date || credit || debit || balance\n"\
-    #     "#{@date} || 50 || || 50").to_stdout
-    # end
+    it 'should include the amount of a deposit transaction, type and balance after' do
+      @bank_account.deposit(50)
+      expect{ @bank_account.statement }.to output(
+        "date || credit || debit || balance\n#{@date} || 50 || || 50\n").to_stdout
+    end
+
+    it 'should include the amount of a withdrawal transaction, type and balance after' do
+      @bank_account.withdraw(10)
+      expect{ @bank_account.statement }.to output(
+        "date || credit || debit || balance\n#{@date} || || 10 || -10\n").to_stdout
+    end
   end
 end

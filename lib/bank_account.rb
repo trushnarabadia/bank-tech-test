@@ -2,18 +2,21 @@ require_relative 'statement'
 
 class BankAccount
 include Statement
-  attr_accessor :balance
+  attr_accessor :balance, :transactions
 
   def initialize(balance = 0)
     @balance = balance
+    @transactions = []
   end
 
   def deposit(amount)
     @balance += amount 
+    deposit_info(amount)
   end
 
   def withdraw(amount)
     @balance -= amount
+    withdrawal_info(amount)
   end
 
   def deposit_info(amount)
@@ -23,6 +26,7 @@ include Statement
       amount: amount, 
       balance: @balance
     }
+    @transactions.prepend(info)
   end
 
   def withdrawal_info(amount)
@@ -32,9 +36,10 @@ include Statement
       amount: amount, 
       balance: @balance
     }
+    @transactions.prepend(info)
   end
 
-  def print_statement()
-    print_top_line
+  def statement()
+    print_statement(@transactions)
   end
 end
